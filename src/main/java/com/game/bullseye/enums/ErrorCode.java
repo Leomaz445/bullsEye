@@ -1,4 +1,4 @@
-package com.game.bullseye.util;
+package com.game.bullseye.enums;
 
 public enum ErrorCode {
     TO_FEW_DIGITS_IN_THE_NUMBER(1),

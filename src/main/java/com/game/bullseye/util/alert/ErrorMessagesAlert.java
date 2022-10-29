@@ -1,5 +1,7 @@
-package com.game.bullseye.util;
+package com.game.bullseye.util.alert;
 
+import com.game.bullseye.enums.ErrorCode;
+import com.game.bullseye.util.Messages;
 import javafx.scene.control.Alert;
 
 import java.util.Map;
@@ -7,7 +9,7 @@ import java.util.function.Supplier;
 
 import static com.game.bullseye.util.GameMessages.*;
 
-public class ErrorMessageConstants {
+public class ErrorMessagesAlert {
 
     private static final Alert alertError = new Alert(Alert.AlertType.ERROR);
     private final Map<ErrorCode, Supplier<Boolean>> mapOfErrors = Map.of(
@@ -17,11 +19,11 @@ public class ErrorMessageConstants {
             ErrorCode.DUPLICATED_NUMBER_IN_THE_INPUT, () -> createAlert(ORIGINAL_NUMBERS)
     );
 
-    public Boolean createErrorOutPut(ErrorCode errorCode) {
+    public Boolean getAlert(ErrorCode errorCode) {
         return mapOfErrors.get(errorCode).get();
     }
 
-    public static boolean createAlert(Messages messages) {
+    public boolean createAlert(Messages messages) {
         alertError.setTitle(messages.getTitle());
         alertError.setHeaderText(messages.getHeader());
         alertError.setContentText(messages.getContent());

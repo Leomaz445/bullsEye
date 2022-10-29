@@ -5,4 +5,6 @@ module com.game.bullseye {
 
     opens com.game.bullseye to javafx.fxml;
     exports com.game.bullseye;
+    exports com.game.bullseye.enums;
+    opens com.game.bullseye.enums to javafx.fxml;
 }

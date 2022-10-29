@@ -1,35 +1,35 @@
 package com.game.bullseye;
 
-import com.game.bullseye.util.ErrorMessageConstants;
+import com.game.bullseye.util.alert.ErrorMessagesAlert;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-import static com.game.bullseye.util.ErrorCode.*;
+import static com.game.bullseye.enums.ErrorCode.*;
 
 public class BullsEyeImplementation {
-    public static final int NUMBER_OF_DIGITS_IN_THE_NUMBER = 4;
-    public static final int NUMBER_RANGE = 10;
-    public static final String REGEX_ALPHABET_USED = ".*[a-zA-Z]+.*";
-    private int guessUserTook;
+
+    private final ErrorMessagesAlert errorMessagesAlert = new ErrorMessagesAlert();
+    private int validGuess;
+    private int invalidGuess;
     private String[] randomNumber;
     private List<String> historyOfGuesses;
-    private ErrorMessageConstants errorMessageConstants = new ErrorMessageConstants();
 
     public BullsEyeImplementation() {
-        this.guessUserTook = 0;
+        this.validGuess = 0;
+        this.invalidGuess = 0;
         this.randomNumber = randomNumberCreation();
         this.historyOfGuesses = new ArrayList<>();
     }
 
-    public int getGuessUserTook() {
-        return guessUserTook;
+    public int getTotalNumberOfGuess() {
+        return validGuess + invalidGuess;
     }
 
     public void incrementByOneGuessUserTook() {
-        this.guessUserTook++;
+        this.validGuess++;
     }
 
     public String[] getRandomNumber() {
@@ -62,7 +62,6 @@ public class BullsEyeImplementation {
                 if (randomNumber[i].equals(split[j]) && i != j)
                     numberOfHits++;
             }
-
         }
         return numberOfHits;
     }
@@ -96,18 +95,18 @@ public class BullsEyeImplementation {
 
 
     public boolean validateResult(String input) {
-
+        invalidGuess++;
         if (input.length() < NUMBER_OF_DIGITS_IN_THE_NUMBER) {
-            return errorMessageConstants.createErrorOutPut(TO_FEW_DIGITS_IN_THE_NUMBER);
+            return errorMessagesAlert.getAlert(TO_FEW_DIGITS_IN_THE_NUMBER);
         }
         if (input.length() > NUMBER_OF_DIGITS_IN_THE_NUMBER) {
-            return errorMessageConstants.createErrorOutPut(TO_MANY_DIGITS_INT_THE_NUMBER);
+            return errorMessagesAlert.getAlert(TO_MANY_DIGITS_INT_THE_NUMBER);
         }
-        if (input.matches(REGEX_ALPHABET_USED)) {
-            return errorMessageConstants.createErrorOutPut(NOT_A_NUMBER_IN_THE_INPUT);
+        if (input.matches(ALPHABET_REGEX)) {
+            return errorMessagesAlert.getAlert(NOT_A_NUMBER_IN_THE_INPUT);
         }
         if (!duplicatedNumberInTheInput(input)) {
-            return errorMessageConstants.createErrorOutPut(DUPLICATED_NUMBER_IN_THE_INPUT);
+            return errorMessagesAlert.getAlert(DUPLICATED_NUMBER_IN_THE_INPUT);
         }
         return true;
     }
