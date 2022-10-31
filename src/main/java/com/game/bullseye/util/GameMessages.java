@@ -1,6 +1,6 @@
 package com.game.bullseye.util;
 
-import static com.game.bullseye.BullsEyeImplementation.NUMBER_OF_DIGITS_IN_THE_NUMBER;
+import static com.game.bullseye.constants.GameConstants.NUMBER_OF_DIGITS_IN_THE_NUMBER;
 
 public class GameMessages {
 
@@ -14,6 +14,9 @@ public class GameMessages {
     private static final String NUMBER_CANT_BE_MORE_THEN = "Number cant be more that " + NUMBER_OF_DIGITS_IN_THE_NUMBER + "digits long";
     private static final String ONLY_NUMBERS = "Please Use Only Numbers";
     private static final String DUPLICATED_NUMBERS = "Please Dont Use The Same Numbers";
+    private static final String EXIT = "Confirm Exit";
+    private static final String DO_YOU_WISH_TO_LEAVE = "Do you wish to leave?";
+    private static final String LEAVE_MESSAGE = "You are about to leave the best game in the world";
 
     public static final Messages DO_YOU_WANT_TO_PLAY_THE_GAME = new Messages.MessagesBuilder()
             .setTitle(GAME_NAME)
@@ -45,12 +48,8 @@ public class GameMessages {
             .setContent(DUPLICATED_NUMBERS).build();
 
     public static final Messages CONFIRM_EXIT = new Messages.MessagesBuilder()
-            .setTitle("Confirm Exit")
-            .setHeader("Do you wish to leave?")
-            .setContent("You are about to leave the best game in the world").build();
+            .setTitle(EXIT)
+            .setHeader(DO_YOU_WISH_TO_LEAVE)
+            .setContent(LEAVE_MESSAGE).build();
 
-    public static Messages RESULT_SCREEN = new Messages.MessagesBuilder()
-            .setTitle("Good Job")
-            .setHeader("You successfully guessed the number")
-            .build();
 }

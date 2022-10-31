@@ -18,18 +18,6 @@ public class Messages {
         return content;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setHeader(String header) {
-        this.header = header;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public static class MessagesBuilder {
         private String title;
         private String header;

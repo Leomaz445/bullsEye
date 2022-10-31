@@ -11,7 +11,8 @@ import javafx.stage.Stage;
 import java.util.Arrays;
 import java.util.Optional;
 
-import static com.game.bullseye.BullsEyeImplementation.NUMBER_OF_DIGITS_IN_THE_NUMBER;
+
+import static com.game.bullseye.constants.GameConstants.NUMBER_OF_DIGITS_IN_THE_NUMBER;
 import static com.game.bullseye.enums.ConfirmationCode.*;
 
 public class BullsEyeGame extends Application {
@@ -34,8 +35,9 @@ public class BullsEyeGame extends Application {
     }
 
     private void gameEngine() {
+        BullsEyeImplementation bullsEyeImplementation = new BullsEyeImplementation();
         do {
-            BullsEyeImplementation bullsEyeImplementation = new BullsEyeImplementation();
+            bullsEyeImplementation.randomNumberCreation();
             System.out.println(Arrays.toString(bullsEyeImplementation.getRandomNumber()));
             startToGuess(bullsEyeImplementation);
         } while (confirmationMessagesAlert.getAlert(PLAY_THE_GAME_AGAIN));
@@ -59,8 +61,9 @@ public class BullsEyeGame extends Application {
             informationMessagesAlert.getAlert(InformationCode.SUMMERY, new Messages.MessagesBuilder()
                     .setTitle("Good Job!")
                     .setHeader("You successfully guessed the number")
-                    .setContent("The number of valid guess it took you is" + bullsEyeImplementation.getTotalNumberOfGuess()).build());
+                    .setContent("The total number of  guess it took you is" + bullsEyeImplementation.getTotalNumberOfGuess()).build());
         }
+        bullsEyeImplementation.getHistoryOfGuesses().clear();
     }
 
     private int getBullsCounter(BullsEyeImplementation bullsEyeImplementation, String result) {

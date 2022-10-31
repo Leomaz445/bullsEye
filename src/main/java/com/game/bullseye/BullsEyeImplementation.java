@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
+import static com.game.bullseye.constants.GameConstants.*;
 import static com.game.bullseye.enums.ErrorCode.*;
 
 public class BullsEyeImplementation {
@@ -20,7 +21,7 @@ public class BullsEyeImplementation {
     public BullsEyeImplementation() {
         this.validGuess = 0;
         this.invalidGuess = 0;
-        this.randomNumber = randomNumberCreation();
+        this.randomNumber = new String[NUMBER_OF_DIGITS_IN_THE_NUMBER];
         this.historyOfGuesses = new ArrayList<>();
     }
 
@@ -41,7 +42,7 @@ public class BullsEyeImplementation {
     }
 
 
-    private String[] randomNumberCreation() {
+    public void randomNumberCreation() {
         String randomizeNumber = "";
         boolean[] numbers = new boolean[NUMBER_RANGE];
         Random randomGenerator = new Random();
@@ -52,7 +53,7 @@ public class BullsEyeImplementation {
                 randomizeNumber = randomizeNumber.concat(String.valueOf(randomNumber));
             }
         }
-        return randomizeNumber.split("", NUMBER_OF_DIGITS_IN_THE_NUMBER);
+        this.randomNumber=randomizeNumber.split("", NUMBER_OF_DIGITS_IN_THE_NUMBER);
     }
 
     public int findNumberOfHits(String[] randomNumber, String[] split) {
@@ -102,7 +103,7 @@ public class BullsEyeImplementation {
         if (input.length() > NUMBER_OF_DIGITS_IN_THE_NUMBER) {
             return errorMessagesAlert.getAlert(TO_MANY_DIGITS_INT_THE_NUMBER);
         }
-        if (input.matches(ALPHABET_REGEX)) {
+        if (!input.matches(ONLY_NUMBERS)) {
             return errorMessagesAlert.getAlert(NOT_A_NUMBER_IN_THE_INPUT);
         }
         if (!duplicatedNumberInTheInput(input)) {
