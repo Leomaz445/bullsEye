@@ -6,20 +6,28 @@ import javafx.scene.control.Alert;
 
 import java.util.Map;
 import java.util.function.Consumer;
-
+/**
+ * This Class contains all the information messages we present to the user
+ */
 public class InformationMessagesAlert {
 
     private final static Alert alertInformation = new Alert(Alert.AlertType.INFORMATION);
+    //implementing the consumer interface
     private final Map<InformationCode, Consumer<Messages>> mapOfInformation = Map.of(
             InformationCode.SUMMERY, this::createAlert,
             InformationCode.YOUR_RESULT, this::createAlert
     );
 
+    /**
+     * This function suing the hashmap to return the right message.
+     * @param alertCode - the code of the summery message
+     * @param messages - the message we want to show to the user
+     */
     public void getAlert(InformationCode alertCode,Messages messages) {
         mapOfInformation.get(alertCode).accept(messages);
     }
 
-    public void createAlert(Messages messages) {
+    private void createAlert(Messages messages) {
         alertInformation.setTitle(messages.getTitle());
         alertInformation.setHeaderText(messages.getHeader());
         alertInformation.setContentText(messages.getContent());

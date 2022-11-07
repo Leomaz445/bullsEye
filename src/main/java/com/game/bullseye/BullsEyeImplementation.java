@@ -10,6 +10,10 @@ import java.util.Random;
 import static com.game.bullseye.constants.GameConstants.*;
 import static com.game.bullseye.enums.ErrorCode.*;
 
+/**
+ * This Class has the logic of the game,its responsible for create a random number
+ * Find the number of hits and the number of bulls,print and validate user input.
+ */
 public class BullsEyeImplementation {
 
     private final ErrorMessagesAlert errorMessagesAlert = new ErrorMessagesAlert();
@@ -18,6 +22,7 @@ public class BullsEyeImplementation {
     private String[] randomNumber;
     private List<String> historyOfGuesses;
 
+    //Constructor that initialize the game.
     public BullsEyeImplementation() {
         this.validGuess = 0;
         this.invalidGuess = 0;
@@ -41,7 +46,7 @@ public class BullsEyeImplementation {
         return historyOfGuesses;
     }
 
-
+    //creating a random number that have different digits.
     public void randomNumberCreation() {
         String randomizeNumber = "";
         boolean[] numbers = new boolean[NUMBER_RANGE];
@@ -56,17 +61,30 @@ public class BullsEyeImplementation {
         this.randomNumber=randomizeNumber.split("", NUMBER_OF_DIGITS_IN_THE_NUMBER);
     }
 
-    public int findNumberOfHits(String[] randomNumber, String[] split) {
+    /**
+     * This function is calculating the hits - number of the right digits in the right place.
+     * @param randomNumber - the random number the program created
+     * @param userGuess - the number user guessed.
+     * @return number of the right hits.
+     */
+    public int findNumberOfHits(String[] randomNumber, String[] userGuess) {
         int numberOfHits = 0;
         for (int i = 0; i < NUMBER_OF_DIGITS_IN_THE_NUMBER; i++) {
             for (int j = 0; j < NUMBER_OF_DIGITS_IN_THE_NUMBER; j++) {
-                if (randomNumber[i].equals(split[j]) && i != j)
+                if (randomNumber[i].equals(userGuess[j]) && i != j)
                     numberOfHits++;
             }
         }
         return numberOfHits;
     }
 
+    /**
+     * This function is calculating the number of bulls - numer of right digits - dont have to be
+     * in the right place
+     * @param randomNumber - random number the program created
+     * @param userGuess - the number user guessed.
+     * @return number of bulls.
+     */
     public int findNumberOfBulls(String[] randomNumber, String[] userGuess) {
         int numberOfBulls = 0;
         for (int i = 0; i < NUMBER_OF_DIGITS_IN_THE_NUMBER; i++) {
@@ -76,6 +94,9 @@ public class BullsEyeImplementation {
         return numberOfBulls;
     }
 
+    /*
+        This function is printing the history of the user guesses.
+     */
     public String printListOfGuesses() {
         if (historyOfGuesses == null)
             return "null";
@@ -94,7 +115,11 @@ public class BullsEyeImplementation {
         }
     }
 
-
+    /**
+     * Check if the number is valid.
+     * @param input - the number user tried to guess
+     * @return if it is a validated guess.
+     */
     public boolean validateResult(String input) {
         invalidGuess++;
         if (input.length() < NUMBER_OF_DIGITS_IN_THE_NUMBER) {
@@ -111,7 +136,9 @@ public class BullsEyeImplementation {
         }
         return true;
     }
-
+    /*
+        private function that courts the number of duplicates in the numbers.
+     */
     private boolean duplicatedNumberInTheInput(String input) {
         String[] split = input.split("", NUMBER_OF_DIGITS_IN_THE_NUMBER);
         boolean[] numbers = new boolean[NUMBER_RANGE];

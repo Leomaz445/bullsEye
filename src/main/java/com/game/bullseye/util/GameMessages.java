@@ -2,6 +2,9 @@ package com.game.bullseye.util;
 
 import static com.game.bullseye.constants.GameConstants.NUMBER_OF_DIGITS_IN_THE_NUMBER;
 
+/**
+ * This Class contains all the strings we used to build the messages in the game.
+ */
 public class GameMessages {
 
     private static final String GAME_NAME = "BullsEye";

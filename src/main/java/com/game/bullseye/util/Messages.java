@@ -1,5 +1,8 @@
 package com.game.bullseye.util;
 
+/**
+ * The Messages object represent the message we show each time to the user.
+ */
 public class Messages {
     private String title;
     private String header;
@@ -18,6 +21,9 @@ public class Messages {
         return content;
     }
 
+    /**
+     * This is an inner class we used to implement the builder pattern
+     */
     public static class MessagesBuilder {
         private String title;
         private String header;

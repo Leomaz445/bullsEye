@@ -9,6 +9,9 @@ import java.util.function.Supplier;
 
 import static com.game.bullseye.util.GameMessages.*;
 
+/**
+ * This Class contains all the error messages we present to the user
+ */
 public class ErrorMessagesAlert {
 
     private static final Alert alertError = new Alert(Alert.AlertType.ERROR);
@@ -18,12 +21,17 @@ public class ErrorMessagesAlert {
             ErrorCode.NOT_A_NUMBER_IN_THE_INPUT, () -> createAlert(USE_ONLY_NUMBERS),
             ErrorCode.DUPLICATED_NUMBER_IN_THE_INPUT, () -> createAlert(ORIGINAL_NUMBERS)
     );
-
-    public Boolean getAlert(ErrorCode errorCode) {
+    /**
+     * This function is using the hashmap to show the message to the user and then return his choice.
+     *
+     * @param errorCode - the code of the message we want to show to the user .
+     * @return return false
+     */
+    public boolean getAlert(ErrorCode errorCode) {
         return mapOfErrors.get(errorCode).get();
     }
 
-    public boolean createAlert(Messages messages) {
+    private boolean createAlert(Messages messages) {
         alertError.setTitle(messages.getTitle());
         alertError.setHeaderText(messages.getHeader());
         alertError.setContentText(messages.getContent());
