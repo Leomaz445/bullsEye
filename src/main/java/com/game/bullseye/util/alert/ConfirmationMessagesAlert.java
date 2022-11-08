@@ -24,8 +24,8 @@ public class ConfirmationMessagesAlert{
     private final Map<ConfirmationCode, Supplier<Boolean>> mapOfConfirmation = Map.of(
             ConfirmationCode.PLAY_THE_GAME, () -> createAlert(DO_YOU_WANT_TO_PLAY_THE_GAME),
             ConfirmationCode.PLAY_THE_GAME_AGAIN, () -> createAlert(PLAY_AGAIN),
-            ConfirmationCode.EXIT_THE_GAME, () -> createAlert(CONFIRM_EXIT),
-            ConfirmationCode.EXIT_THE_ROUND, () -> createAlert(CONFIRM_EXIT_CURRENT_ROUND)
+            ConfirmationCode.EXIT_THE_ROUND, () -> createAlert(CONFIRM_EXIT_CURRENT_ROUND),
+            ConfirmationCode.EXIT_THE_GAME, () -> createAlert(CONFIRM_EXIT)
     );
 
     /**
@@ -49,10 +49,7 @@ public class ConfirmationMessagesAlert{
         alertConfirmation.setHeaderText(messages.getHeader());
         alertConfirmation.setContentText(messages.getContent());
         Optional<ButtonType> option = alertConfirmation.showAndWait();
-        if (option.get() == ButtonType.YES)
-            return true;
-
-        return false;
+         return option.isPresent() && option.get() == ButtonType.YES;
     }
 
 

@@ -76,7 +76,8 @@ public class BullsEyeGame extends Application {
             informationMessagesAlert.getAlert(InformationCode.SUMMERY, new Messages.MessagesBuilder()
                     .setTitle("Good Job!")
                     .setHeader("You successfully guessed the number")
-                    .setContent("The total number of  guess it took you is " + bullsEyeImplementation.getNumberOfGuesses()).build());
+                    .setContent("The total number of  guess it took you is " + bullsEyeImplementation.getNumberOfGuesses())
+                    .build());
         }
         bullsEyeImplementation.restartTheGame();
     }
