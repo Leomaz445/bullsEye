@@ -18,8 +18,10 @@ public class GameMessages {
     private static final String ONLY_NUMBERS = "Please Use Only Numbers";
     private static final String DUPLICATED_NUMBERS = "Please Dont Use The Same Numbers";
     private static final String EXIT = "Confirm Exit";
-    private static final String DO_YOU_WISH_TO_LEAVE = "Do you wish to leave?";
+    private static final String DO_YOU_WISH_TO_LEAVE = "Your about to EXIT THE game, are you sure?";
     private static final String LEAVE_MESSAGE = "You are about to leave the best game in the world";
+    private static final String DO_YOU_WISH_TO_LEAVE_ROUND = "Your are leaving the CURRENT ROUND";
+    private static final String LEAVE_MESSAGE_ROUND = "All the date will be lost";
 
     public static final Messages DO_YOU_WANT_TO_PLAY_THE_GAME = new Messages.MessagesBuilder()
             .setTitle(GAME_NAME)
@@ -54,5 +56,10 @@ public class GameMessages {
             .setTitle(EXIT)
             .setHeader(DO_YOU_WISH_TO_LEAVE)
             .setContent(LEAVE_MESSAGE).build();
+
+    public static final Messages CONFIRM_EXIT_CURRENT_ROUND = new Messages.MessagesBuilder()
+            .setTitle(EXIT)
+            .setHeader(DO_YOU_WISH_TO_LEAVE_ROUND)
+            .setContent(LEAVE_MESSAGE_ROUND).build();
 
 }

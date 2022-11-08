@@ -64,10 +64,11 @@ public class BullsEyeGame extends Application {
             dialog.setHeaderText("Please enter your guess");
             Optional<String> userGuessedNumber = dialog.showAndWait();
             if (userGuessedNumber.isPresent()) {
+                bullsEyeImplementation.incrementByOneGuessUserTook();
                 if (bullsEyeImplementation.validateResult(userGuessedNumber.get())) {
-                    bullsCounter = getBullsCounter(bullsEyeImplementation, userGuessedNumber.get());
+                    bullsCounter = howManyGuessedNumberRight(bullsEyeImplementation, userGuessedNumber.get());
                 }
-            } else if (confirmationMessagesAlert.getAlert(EXIT_THE_GAME)) {
+            } else if (confirmationMessagesAlert.getAlert(EXIT_THE_ROUND)) {
                 break;
             }
         }
@@ -75,9 +76,9 @@ public class BullsEyeGame extends Application {
             informationMessagesAlert.getAlert(InformationCode.SUMMERY, new Messages.MessagesBuilder()
                     .setTitle("Good Job!")
                     .setHeader("You successfully guessed the number")
-                    .setContent("The total number of  guess it took you is" + bullsEyeImplementation.getTotalNumberOfGuess()).build());
+                    .setContent("The total number of  guess it took you is " + bullsEyeImplementation.getNumberOfGuesses()).build());
         }
-        bullsEyeImplementation.getHistoryOfGuesses().clear(); //clearing the history of guesses after the game is done.
+        bullsEyeImplementation.restartTheGame();
     }
 
     /**
@@ -87,10 +88,9 @@ public class BullsEyeGame extends Application {
      * @param userGuessedNumber      - user input
      * @return how many good guesses.
      */
-    private int getBullsCounter(BullsEyeImplementation bullsEyeImplementation, String userGuessedNumber) {
+    private int howManyGuessedNumberRight(BullsEyeImplementation bullsEyeImplementation, String userGuessedNumber) {
         int bullsCounter;
         int histCounter;
-        bullsEyeImplementation.incrementByOneGuessUserTook();
         String[] split = userGuessedNumber.split("", NUMBER_OF_DIGITS_IN_THE_NUMBER);
         bullsCounter = bullsEyeImplementation.findNumberOfBulls(bullsEyeImplementation.getRandomNumber(), split);
         histCounter = bullsEyeImplementation.findNumberOfHits(bullsEyeImplementation.getRandomNumber(), split);
@@ -102,7 +102,7 @@ public class BullsEyeGame extends Application {
      * @param bullsEyeImplementation - main logic of the game.
      * @param userGuessedNumber      - the number the user guessed.
      * @param bullsCounter           - number of bulls the user have.
-     * @param histCounter            - number of his the user have.
+     * @param histCounter            - number of hits the user have.
      */
     private void showHowManyBullsAndHits(BullsEyeImplementation bullsEyeImplementation,
                                          String userGuessedNumber, int bullsCounter, int histCounter) {
