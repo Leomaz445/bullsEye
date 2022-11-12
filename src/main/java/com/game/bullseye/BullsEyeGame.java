@@ -8,7 +8,6 @@ import javafx.application.Application;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 
-import java.util.Arrays;
 import java.util.Optional;
 
 import static com.game.bullseye.constants.GameConstants.NUMBER_OF_DIGITS_IN_THE_NUMBER;
@@ -46,7 +45,7 @@ public class BullsEyeGame extends Application {
         BullsEyeImplementation bullsEyeImplementation = new BullsEyeImplementation();
         do {
             bullsEyeImplementation.randomNumberCreation();
-            System.out.println(Arrays.toString(bullsEyeImplementation.getRandomNumber()));
+//            System.out.println(Arrays.toString(bullsEyeImplementation.getRandomNumber()));
             startToGuess(bullsEyeImplementation);
         } while (confirmationMessagesAlert.getAlert(PLAY_THE_GAME_AGAIN));
     }

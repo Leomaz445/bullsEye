@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 
 import java.util.Map;
 import java.util.function.Consumer;
+
 /**
  * This Class contains all the information messages we present to the user
  */
@@ -20,15 +21,17 @@ public class InformationMessagesAlert {
 
     /**
      * This function suing the hashmap to return the right message.
+     *
      * @param alertCode - the code of the summery message
-     * @param messages - the message we want to show to the user
+     * @param messages  - the message we want to show to the user
      */
-    public void getAlert(InformationCode alertCode,Messages messages) {
+    public void getAlert(InformationCode alertCode, Messages messages) {
         mapOfInformation.get(alertCode).accept(messages);
     }
 
     /**
      * This function is creating the showing to the user the alert message.
+     *
      * @param messages - the message that we want to represent to the user.
      */
     private void createAlert(Messages messages) {

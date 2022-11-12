@@ -21,6 +21,7 @@ public class ErrorMessagesAlert {
             ErrorCode.NOT_A_NUMBER_IN_THE_INPUT, () -> createAlert(USE_ONLY_NUMBERS),
             ErrorCode.DUPLICATED_NUMBER_IN_THE_INPUT, () -> createAlert(ORIGINAL_NUMBERS)
     );
+
     /**
      * This function is using the hashmap to show the message to the user and then return his choice.
      *

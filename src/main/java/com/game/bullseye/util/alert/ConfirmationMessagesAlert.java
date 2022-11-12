@@ -17,9 +17,9 @@ import static com.game.bullseye.util.GameMessages.*;
  * - Play The game Again - if he wants to play Again.
  * - Exit the game - if he wants to exit the game.
  */
-public class ConfirmationMessagesAlert{
+public class ConfirmationMessagesAlert {
 
-    private static final Alert alertConfirmation = new Alert(Alert.AlertType.CONFIRMATION,"",ButtonType.YES,ButtonType.NO);
+    private static final Alert alertConfirmation = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
     //This hashmap it's implementing Supplier interface
     private final Map<ConfirmationCode, Supplier<Boolean>> mapOfConfirmation = Map.of(
             ConfirmationCode.PLAY_THE_GAME, () -> createAlert(DO_YOU_WANT_TO_PLAY_THE_GAME),
@@ -49,7 +49,7 @@ public class ConfirmationMessagesAlert{
         alertConfirmation.setHeaderText(messages.getHeader());
         alertConfirmation.setContentText(messages.getContent());
         Optional<ButtonType> option = alertConfirmation.showAndWait();
-         return option.isPresent() && option.get() == ButtonType.YES;
+        return option.isPresent() && option.get() == ButtonType.YES;
     }
 
 

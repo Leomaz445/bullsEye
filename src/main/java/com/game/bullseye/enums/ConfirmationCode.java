@@ -8,6 +8,7 @@ public enum ConfirmationCode {
 
     private final int value;
 
-    ConfirmationCode(int value) {this.value = value;
+    ConfirmationCode(int value) {
+        this.value = value;
     }
 }
