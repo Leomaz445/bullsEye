@@ -4,6 +4,7 @@ import static com.game.bullseye.constants.GameConstants.NUMBER_OF_DIGITS_IN_THE_
 
 /**
  * This Class contains all the strings we used to build the messages in the game.
+ * we're using the builder pattern to implement the process of building the messages.
  */
 public class GameMessages {
 

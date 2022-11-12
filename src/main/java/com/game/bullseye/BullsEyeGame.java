@@ -15,7 +15,7 @@ import static com.game.bullseye.constants.GameConstants.NUMBER_OF_DIGITS_IN_THE_
 import static com.game.bullseye.enums.ConfirmationCode.*;
 
 /**
- * The Main of the game, from here we managed the game.
+ * The Main of the game, from here we managed the game - showing output messages,and using the implementation class/
  */
 public class BullsEyeGame extends Application {
 
@@ -40,7 +40,7 @@ public class BullsEyeGame extends Application {
     }
 
     /**
-     * While the user chose to play he is playing, before he would live we would ask him if he sure.
+     * While the user chose to play he is playing, before he  live we would ask him if he sure.
      */
     private void gameEngine() {
         BullsEyeImplementation bullsEyeImplementation = new BullsEyeImplementation();
@@ -55,7 +55,7 @@ public class BullsEyeGame extends Application {
      * This user is starting to play the game and trying to guess the number
      *
      * @param bullsEyeImplementation - contains all the logic of the game we need - the random number,history of guess
-     *                               counter for the total number of guesses.
+     *                               counter for the total number of guesses and validation.
      */
     private void startToGuess(BullsEyeImplementation bullsEyeImplementation) {
         TextInputDialog dialog = new TextInputDialog();

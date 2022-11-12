@@ -3,6 +3,7 @@ package com.game.bullseye;
 import com.game.bullseye.util.alert.ErrorMessagesAlert;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -26,7 +27,8 @@ public class BullsEyeImplementation {
         this.randomNumber = new String[NUMBER_OF_DIGITS_IN_THE_NUMBER];
         this.historyOfGuesses = new ArrayList<>();
     }
-    public void restartTheGame(){
+
+    public void restartTheGame() {
         this.numberOfGuesses = 0;
         this.historyOfGuesses.clear();
     }
@@ -35,6 +37,7 @@ public class BullsEyeImplementation {
         return numberOfGuesses;
     }
 
+    //incrementing user guesses by one.
     public void incrementByOneGuessUserTook() {
         this.numberOfGuesses++;
     }
@@ -81,7 +84,7 @@ public class BullsEyeImplementation {
     }
 
     /**
-     * This function is calculating the number of bulls - numer of right digits - dont have to be
+     * This function is calculating the number of bulls - number of right digits - don't have to be
      * in the right place
      *
      * @param randomNumber - random number the program created
@@ -142,7 +145,7 @@ public class BullsEyeImplementation {
     }
 
     /*
-        private function that courts the number of duplicates in the numbers.
+        private function that check if we have more than one duplicate in the number
      */
     private boolean duplicatedNumberInTheInput(String input) {
         String[] split = input.split("", NUMBER_OF_DIGITS_IN_THE_NUMBER);

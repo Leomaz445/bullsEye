@@ -27,6 +27,10 @@ public class InformationMessagesAlert {
         mapOfInformation.get(alertCode).accept(messages);
     }
 
+    /**
+     * This function is creating the showing to the user the alert message.
+     * @param messages - the message that we want to represent to the user.
+     */
     private void createAlert(Messages messages) {
         alertInformation.setTitle(messages.getTitle());
         alertInformation.setHeaderText(messages.getHeader());
